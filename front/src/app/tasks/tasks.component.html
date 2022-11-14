@@ -1,0 +1,24 @@
+<form>
+    <label for="title">Titulo:</label>
+    <input type="text" name="" id="" required>
+    <label for="description">Descripcion:</label>
+    <input type="text" name="" id="" required>
+    <label for="creator">Creador:</label>
+    <input type="text" name="" id="" required>
+    <label for="status">Estado:</label>
+    <input type="checkbox" name="" id="">
+    <button>Crear tarea</button>
+</form>
+
+<li *ngFor="let task of todoService.todo">
+    <h2><b>Titulo:</b> {{task.title}}</h2>
+    <h3><b>Descripcion:</b> {{task.description}}</h3>
+    <h4><b>Creador:</b> {{task.creator}}</h4>
+    <span>
+        Estado:
+        <input type="checkbox" name="status" id="status" [checked]="task.status" disabled>
+        {{task.status ? "Completado" : "No completado"}}
+    </span>
+    <button [routerLink]="['/editar', task._id]">Editar</button>
+    <button (click)="deleteTask(task._id || '')">Borrar</button>
+</li>
